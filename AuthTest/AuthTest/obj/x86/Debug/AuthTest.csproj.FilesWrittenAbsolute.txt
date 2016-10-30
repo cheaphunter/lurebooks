@@ -1,0 +1,6 @@
+/home/nathan/Documents/Projects/Audible/AuthTest/AuthTest/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/nathan/Documents/Projects/Audible/AuthTest/AuthTest/bin/Debug/AuthTest.exe.mdb
+/home/nathan/Documents/Projects/Audible/AuthTest/AuthTest/bin/Debug/AuthTest.exe
+/home/nathan/Documents/Projects/Audible/AuthTest/AuthTest/obj/x86/Debug/AuthTest.exe
+/home/nathan/Documents/Projects/Audible/AuthTest/AuthTest/obj/x86/Debug/AuthTest.exe.mdb
+/home/nathan/Documents/Projects/Audible/AuthTest/AuthTest/obj/x86/Debug/.NETFramework,Version=v4.5.1.AssemblyAttribute.cs

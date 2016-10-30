@@ -1,0 +1,468 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Walkthrough of how third party developers can access Audible APIs using LWA.">
+      <title>Authentication - Audible API</title>
+      <link rel="home" href="#top" title="Audible API">
+      <link rel="up" href="#top" title="Audible API">
+      <link rel="prev" href="Doc_ResponseGroups.html" title="Response Groups">
+      <link rel="next" href="Doc_Examples.html" title="Examples">
+      <meta name="keywords" content="">
+      <meta name="deployment_region" content="EWR">
+      <meta name="product" content="Audible API">
+      <meta name="guide" content="Developer Reference">
+      <meta name="guide-locale" content="en_us">
+      <link rel="icon" type="image/ico" href="/favicon.ico">
+      <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+      <link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="css/google-font.css">
+      <link rel="stylesheet" type="text/css" href="css/highlight-default.css">
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css">
+      <link rel="stylesheet" type="text/css" href="css/awsdocs.css"><script type="text/javascript" src="js/highlight.pack.js"></script><script type="text/javascript" src="js/jquery.min.js"></script><script type="text/javascript" src="js/jquery-ui.min.js"></script><script type="text/javascript" src="js/handlebars.js"></script><script type="text/javascript" src="js/awsdocs.min.js"></script></head>
+   <body id="top">
+      <div id="aws-nav" class="aws-nav-header">
+         <div class="aws-nav-header-left">
+            <div class="aws-nav-logo"><a href="Welcome.html"><span>Amazon Web Services</span></a></div>
+         </div>
+         <div id="aws-nav-header-right" class="aws-nav-header-right">
+            <div class="aws-nav-popover-trigger" data-dropdown="aws-nav-dropdown-lang"></div>
+            <div id="aws-nav-quicklinks-separator" class="aws-nav-quicklinks-separator">
+               <div class="aws-nav-left"></div>
+               <div class="aws-nav-right"></div>
+            </div>
+         </div>
+         <div id="topnav-flyout-menu-container">
+            <ul id="topnav-flyout-menu"><script id="flyout-item-template" type="text/x-handlebars-template">           
+                    {{#flyoutList}}
+                    
+                    <li>{{listItem}}
+                        {{#if subList}}
+                        <ul>
+                            {{#subList}}
+                            <li class="awsdocs-flyout-link-wrapper"><a href="{{target}}">{{text}}</a></li>
+                            {{/subList}}
+                        </ul>
+                        {{/if}}
+                    </li>
+                    
+                    {{/flyoutList}}
+                </script></ul>
+            <div id="topnav-flyout-menu-spacer"></div>
+         </div>
+      </div><script type="text/javascript">
+         <!--
+						var thispage = "Doc_Authentication.html";
+						var tocroot = location.protocol + '//' + location.hostname + location.pathname;
+						--></script><div id="content-container">
+         <div id="left-column" class="ui-resizable">
+            <div id="left-col-header">
+               <div id="left-col-top-content">
+                  <div id="service-name">Audible API </div>
+                  <div id="guide-info">Developer Reference (Version 1.0)
+                     <div id="content-button"><i id="toggle-contents" class="fa fa-bars"></i></div>
+                  </div>
+               </div>
+            </div>
+            <div id="toc">
+               <ul class="awstoc">
+                  <li class="awstoc leaf"><a class="awstoc" href="Welcome.html">Welcome</a></li>
+                  <li class="awstoc closed"><a class="awstoc" href="Doc_GettingStarted.html">Getting Started</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="DeveloperRegistration.html">Registration</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="AccessRequest.html">Request Access</a></li>
+                        <li class="awstoc closed"><a class="awstoc" href="GetCredentials.html">Obtain Tokens</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="AnonymousCredentials.html">Anonymous Tokens</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="CustomerCredentials.html">Customer Tokens</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="awstoc leaf"><a class="awstoc" href="Doc_MakingRequests.html">Making Requests</a></li>
+                  <li class="awstoc leaf"><a class="awstoc" href="Doc_ResponseGroups.html">Response Groups</a></li>
+                  <li class="awstoc leaf"><a class="awstoc selected" href="Doc_Authentication.html">Authentication</a></li>
+                  <li class="awstoc leaf"><a class="awstoc" href="Doc_Examples.html">Examples</a></li>
+                  <li class="awstoc closed"><a class="awstoc" href="API_Operations.html">Actions</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetLastPositionHeardAnnotations.html">GET /annotations/lastpositions</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetCategories.html">GET /catalog/categories</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetCategoryById.html">GET /catalog/categories/{id}</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetProducts.html">GET /catalog/products</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetProduct.html">GET /catalog/products/{asin}</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetReviews.html">GET /catalog/products/{asin}/reviews</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetSimilar.html">GET /catalog/products/{asin}/sims</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetContentLicense.html">POST /content/{asin}/licenserequest</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetContentMetadata.html">GET /content/{asin}/metadata</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetPage.html">GET /pages/{page_id}</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetRecommendations.html">GET /recommendations</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="API_Types.html">Data Types</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="API_AsinLPH.html">AsinLPH</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Author.html">Author</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_BinRange.html">BinRange</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Category.html">Category</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CategoryImage.html">CategoryImage</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CategoryLadder.html">CategoryLadder</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Chapter.html">Chapter</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ChapterInfo.html">ChapterInfo</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Codec.html">Codec</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentLicense.html">ContentLicense</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentLicenseKey.html">ContentLicenseKey</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentMetadata.html">ContentMetadata</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentReference.html">ContentReference</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentUrl.html">ContentUrl</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CustomerPrice.html">CustomerPrice</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CustomerReview.html">CustomerReview</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GuidedReviewResponse.html">GuidedReviewResponse</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Hyperlink.html">Hyperlink</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Image.html">Image</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_LastPositionHeard.html">LastPositionHeard</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Narrator.html">Narrator</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Page.html">Page</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_PageSection.html">PageSection</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_PageSectionModel.html">PageSectionModel</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_PageSectionView.html">PageSectionView</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Price.html">Price</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Product.html">Product</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductFilterBin.html">ProductFilterBin</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductFilterField.html">ProductFilterField</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductPlan.html">ProductPlan</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductRating.html">ProductRating</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Quote.html">Quote</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_RatingDistribution.html">RatingDistribution</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ReviewContentScores.html">ReviewContentScores</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ReviewRatings.html">ReviewRatings</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc leaf"><a class="awstoc" href="Doc_Glossary.html">Glossary</a></li>
+               </ul>
+            </div>
+         </div>
+         <div id="main-column">
+            <div id="main">
+               <div id="main-content">
+                  <div id="breadcrumbs">
+                     <table summary="Breadcrumbs">
+                        <tr>
+                           <td>
+                              <div class="navheader">
+                                 <div class="breadcrumb"><a href="Welcome.html">Audible API Developer Reference</a> &raquo; <span class="breadcrumb">Authentication</span></div>
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+                  <div id="main-col-body">
+                     <div class="chapter" id="Doc_Authentication">
+                        <div class="titlepage">
+                           <div>
+                              <div>
+                                 <h1 class="topictitle">Authentication</h1>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="highlights">
+                           <p><strong>Topics</strong></p>
+                           <ul>
+                              <li><a href="Doc_Authentication.html#d0e1043">Overview</a></li>
+                              <li><a href="Doc_Authentication.html#d0e1058">What is LWA?</a></li>
+                              <li><a href="Doc_Authentication.html#d0e1067">How to Use LWA</a></li>
+                              <li><a href="Doc_Authentication.html#d0e1126">Scopes for Audible API</a></li>
+                              <li><a href="Doc_Authentication.html#d0e1213">Making Calls to Audible API</a></li>
+                              <li><a href="Doc_Authentication.html#d0e1234">LWA Example</a></li>
+                              <li><a href="Doc_Authentication.html#d0e1264">Troubleshooting</a></li>
+                           </ul>
+                        </div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="d0e1043">Overview</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <p>
+                                         This section presents a walkthrough of what must be done
+                                         by a third party app developer to access the Audible
+                                         APIs.  Some API endpoints are open and can be accessed
+                                         without authentication.  For example, the following
+                                         command will retrieve the list of audiobook categories
+                                         available in the Audible catalog:
+                           </p><pre class="screen">$ curl https://api.audible.com/1.0/catalog/categories</pre><p>
+                                          Other API endpoints are secured because they depend on
+                                          user data so callers must authenticate and prove that
+                                          they have the user's permission.  This is done using
+                                          Login With Amazon (LWA).
+                           </p>
+                        </div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="d0e1058">What is LWA?</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <p>
+                                          LWA is Amazon's implementation of OAuth2.  With LWA, a
+                                          third party app requests a user's permission to access
+                                          that user's account by having the user log in to
+                                          Amazon (to authenticate the user) and accept the
+                                          permissions the app is requesting (to authorize the
+                                          app).  Once the user grants permission, LWA issues an
+                                          access token to the app.  The app can use the access
+                                          token in API calls to prove that it was granted access
+                                          to the endpoint and identify which user's account is
+                                          being accessed.
+                           </p>
+                        </div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="d0e1067">How to Use LWA</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <p>Complete LWA documentation can be found at the 
+                                      <a class="ulink" href="http://login.amazon.com/" target="_blank">LWA Homepage</a>.
+                           </p>
+                           <p>In order to use LWA, you must:</p>
+                           <div class="orderedlist">
+                              <ol class="orderedlist" type="1">
+                                 <li class="listitem">
+                                    <p>Register as an Amazon Developer from the <a class="ulink" href="https://developer.amazon.com/lwa/sp/overview.html" target="_blank">Amazon Developer Homepage</a>.
+                                    </p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>Create a security profile from the <a class="ulink" href="https://developer.amazon.com/home.html" target="_blank">Amazon Developer Console</a>.
+                                    </p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>Enable LWA for your security profile.</p>
+                                 </li>
+                              </ol>
+                           </div>
+                           <p>
+                                          Follow the LWA documentation to get the access token
+                                          needed to make calls to secure Audible API endpoints.
+                                          Here are a few things you will need:
+                           </p>
+                           <div class="itemizedlist">
+                              <ul class="itemizedlist" type="disc">
+                                 <li class="listitem">
+                                    <p>Get your <code class="filename">Client ID</code> and <code class="filename">Client Secret</code> from your security profile.
+                                    </p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>One or more <code class="filename">scope</code> values from the table in the next section.
+                                    </p>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="d0e1126">Scopes for Audible API</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <p>
+                                          Audible API resources are limited by OAuth scopes. When you request an
+                                          access token from LWA, you must indicate which scopes you anticipate using.
+                                          The following table lists the Audible API scopes and the resources they 
+                                          guard.
+                           </p>
+                           <div class="table"><a name="d0e756"></a><p class="title"><b></b></p>
+                              <div class="table-contents">
+                                 <table cellspacing="0" border="0">
+                                    <colgroup>
+                                       <col class="scope">
+                                       <col class="resource">
+                                       <col class="description">
+                                    </colgroup>
+                                    <thead>
+                                       <tr>
+                                          <th>Scope</th>
+                                          <th>Resource</th>
+                                          <th>Description</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                          <td>audible:annotations.read</td>
+                                          <td>GET /1.0/annotations</td>
+                                          <td>Permission to view your Audible audiobook bookmarks and current position information.</td>
+                                       </tr>
+                                       <tr>
+                                          <td>audible:catalog.read</td>
+                                          <td>GET /1.0/catalog</td>
+                                          <td>Permission to browse Audible's catalog.</td>
+                                       </tr>
+                                       <tr>
+                                          <td>audible:content.read</td>
+                                          <td>GET,POST /1.0/content</td>
+                                          <td>Permission to play your Audible audiobooks.</td>
+                                       </tr>
+                                       <tr>
+                                          <td>audible:browse.read</td>
+                                          <td>GET /1.0/recommendations</td>
+                                          <td>Permission to access personalized browsing of the Audible catalog.</td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div><br class="table-break"></div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="d0e1213">Making Calls to Audible API</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <p>
+                                          Once you have an access token, you can make calls to
+                                          secure Audible API endpoints.
+                           </p>
+                           <p>
+                                          To make secure API calls, just include an HTTP header
+                                          containing:
+                           </p><pre class="screen">Authorization: bearer ACCESS_TOKEN</pre><p>
+                                          where you replace <code class="filename">ACCESS_TOKEN</code> with
+                                          the content of the access token.
+                           </p>
+                        </div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="d0e1234">LWA Example</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <p>
+                                          Listing product recommendations requires authentication on 
+                                          behalf of an Audible customer. This resource requires the 
+                                          <code class="filename">audible:browse.read</code> OAuth scope. To access 
+                                          recommendations, one must request an access token from LWA with 
+                                          that scope and the application's <code class="filename">Client ID</code> 
+                                          and <code class="filename">Client Secret</code>. The token is placed into 
+                                          the <code class="filename">Authorization</code> header and the recommendations 
+                                          resource is requested. This command (when used with a valid access 
+                                          token) will retrieve the first five recommendations for the 
+                                          customer account associated with the access token:
+                           </p><pre class="screen">
+$ curl --header "Authorization: bearer Atza|IQEBLzAtAhUAkl...iRVFAr4pqVHc" \
+"https://api.audible.com/1.0/recommendations?\
+response_groups=product_desc&amp;\
+num_results=5"
+</pre><p>
+                                          The resulting output should look something like:
+                           </p><pre class="screen">
+{
+    "recommendations": [
+        {
+            "asin": "B002V1NHYC", 
+            "title": "The Abolition of Man &amp; The Great Divorce"
+        }, 
+        {
+            "asin": "B00DDTGKBI", 
+            "title": "Understanding the Mysteries of Human Behavior"
+        }, 
+        {
+            "asin": "B008VGMCUQ", 
+            "title": "The Problem of Pain"
+        }, 
+        {
+            "asin": "B00O3I82SM", 
+            "subtitle": "The Classic BBC Radio 4 Full-Cast Dramatisations", 
+            "title": "The Complete Chronicles of Narnia"
+        }, 
+        {
+            "asin": "B00HJZDKLU", 
+            "subtitle": "Essay Collection and Other Short Pieces", 
+            "title": "C. S. Lewis"
+        }
+    ], 
+    "response_groups": [
+        "product_desc", 
+        "always-returned"
+    ]
+}
+</pre></div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="d0e1264">Troubleshooting</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <p>
+                                          If you get an HTTP 403 response the problem could be:
+                           </p>
+                           <div class="itemizedlist">
+                              <ul class="itemizedlist" type="disc">
+                                 <li class="listitem">
+                                    <p>An expired access token.</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>A missing or badly formatted <code class="filename">Authorization</code> header.
+                                    </p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>The access token's scope does not have permission to access the endpoint.</p>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div><img src="images/expanderarrow.png" style="display:none;height:0;width:0"><div id="main-col-footer">
+                     <div id="doc-conventions"><a target="_top" href="https://docs.aws.amazon.com/general/latest/gr/docconventions.html">Document Conventions</a></div>
+                     <div id="next"><a class="awstoc" accesskey="p" href="Doc_ResponseGroups.html">&laquo; Previous </a><a class="awstoc" accesskey="n" href="Doc_Examples.html">Next &raquo;</a></div>
+                  </div>
+               </div>
+            </div>
+            <div id="right-expanded">
+               <div id="right-content-wrapper">
+                  <div id="right-col-header"><a id="pdf_link" href="audible-api.pdf"> PDF </a></div>
+                  <div id="pagetoc">
+                     <p>On this page:</p>
+                     <ul class="pagetoc">
+                        <li class="pagetoc" name="Overview"><a class="pagetoc" href="#d0e1043">Overview</a></li>
+                        <li class="pagetoc" name="What is LWA?"><a class="pagetoc" href="#d0e1058">What is LWA?</a></li>
+                        <li class="pagetoc" name="How to Use LWA"><a class="pagetoc" href="#d0e1067">How to Use LWA</a></li>
+                        <li class="pagetoc" name="Scopes for Audible API"><a class="pagetoc" href="#d0e1126">Scopes for Audible API</a></li>
+                        <li class="pagetoc" name="Making Calls to Audible API"><a class="pagetoc" href="#d0e1213">Making Calls to Audible API</a></li>
+                        <li class="pagetoc" name="LWA Example"><a class="pagetoc" href="#d0e1234">LWA Example</a></li>
+                        <li class="pagetoc" name="Troubleshooting"><a class="pagetoc" href="#d0e1264">Troubleshooting</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="footer">
+         <div id="footer-left"><a target="_top" href="http://www.audible.com/legal-terms/privacy-policy?moduleId=201648650">Privacy Notice</a> | &copy; 2015 Audible Inc. All rights reserved.
+         </div>
+         <div id="footer-right">&nbsp;</div>
+      </div>
+      <noscript>
+         <div>
+            <div>
+               <div>
+                  <div id="error_messages">
+                     <div id="js_error_message"><strong>Javascript is disabled or is unavailable in your browser.</strong><br> To use the AWS Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions. 
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </noscript>
+   </body>
+</html>

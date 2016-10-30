@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Chapter - Audible API</title>
+      <link rel="home" href="#top" title="Audible API">
+      <link rel="up" href="API_Types.html" title="Data Types">
+      <link rel="prev" href="API_CategoryLadder.html" title="CategoryLadder">
+      <link rel="next" href="API_ChapterInfo.html" title="ChapterInfo">
+      <meta name="keywords" content="Types,Chapter,">
+      <meta name="deployment_region" content="EWR">
+      <meta name="product" content="Audible API">
+      <meta name="guide" content="Developer Reference">
+      <meta name="guide-locale" content="en_us">
+      <link rel="icon" type="image/ico" href="/favicon.ico">
+      <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+      <link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="css/google-font.css">
+      <link rel="stylesheet" type="text/css" href="css/highlight-default.css">
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css">
+      <link rel="stylesheet" type="text/css" href="css/awsdocs.css"><script type="text/javascript" src="js/highlight.pack.js"></script><script type="text/javascript" src="js/jquery.min.js"></script><script type="text/javascript" src="js/jquery-ui.min.js"></script><script type="text/javascript" src="js/handlebars.js"></script><script type="text/javascript" src="js/awsdocs.min.js"></script></head>
+   <body id="top">
+      <div id="aws-nav" class="aws-nav-header">
+         <div class="aws-nav-header-left">
+            <div class="aws-nav-logo"><a href="Welcome.html"><span>Amazon Web Services</span></a></div>
+         </div>
+         <div id="aws-nav-header-right" class="aws-nav-header-right">
+            <div class="aws-nav-popover-trigger" data-dropdown="aws-nav-dropdown-lang"></div>
+            <div id="aws-nav-quicklinks-separator" class="aws-nav-quicklinks-separator">
+               <div class="aws-nav-left"></div>
+               <div class="aws-nav-right"></div>
+            </div>
+         </div>
+      </div><script type="text/javascript">
+         <!--
+						var thispage = "API_Chapter.html";
+						var tocroot = location.protocol + '//' + location.hostname + location.pathname;
+						--></script><div id="content-container">
+         <div id="left-column" class="ui-resizable">
+            <div id="left-col-header">
+               <div id="left-col-top-content">
+                  <div id="service-name">Audible API </div>
+                  <div id="guide-info">Developer Reference (Version 1.0)
+                     <div id="content-button"><i id="toggle-contents" class="fa fa-bars"></i></div>
+                  </div>
+               </div>
+            </div>
+            <div id="toc">
+               <ul class="awstoc">
+                  <li class="awstoc leaf"><a class="awstoc" href="Welcome.html">Welcome</a></li>
+                  <li class="awstoc closed"><a class="awstoc" href="GettingStarted.html">Getting Started</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="DeveloperRegistration.html">Registration</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="AccessRequest.html">Request Access</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="Authentication.html">Authentication</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="CustomerCredentials.html">Access for a Customer</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="AnonymousCredentials.html">Access Without a Customer</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc leaf"><a class="awstoc" href="MakingRequests.html">Making Requests</a></li>
+                  <li class="awstoc leaf"><a class="awstoc" href="ResponseGroups.html">Response Groups</a></li>
+                  <li class="awstoc leaf"><a class="awstoc" href="Examples.html">Examples</a></li>
+                  <li class="awstoc closed"><a class="awstoc" href="API_Operations.html">Actions</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetLastPositionHeardAnnotations.html">GET /annotations/lastpositions</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetCategories.html">GET /catalog/categories</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetCategoryById.html">GET /catalog/categories/{id}</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetProducts.html">GET /catalog/products</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetProduct.html">GET /catalog/products/{asin}</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetReviews.html">GET /catalog/products/{asin}/reviews</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetSimilar.html">GET /catalog/products/{asin}/sims</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetContentLicense.html">POST /content/{asin}/licenserequest</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetContentMetadata.html">GET /content/{asin}/metadata</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetPage.html">GET /pages/{page_id}</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetRecommendations.html">GET /recommendations</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc opened"><a class="awstoc" href="API_Types.html">Data Types</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="API_AsinLPH.html">AsinLPH</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Author.html">Author</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_BinRange.html">BinRange</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Category.html">Category</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CategoryImage.html">CategoryImage</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CategoryLadder.html">CategoryLadder</a></li>
+                        <li class="awstoc leaf"><a class="awstoc selected" href="API_Chapter.html">Chapter</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ChapterInfo.html">ChapterInfo</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Codec.html">Codec</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentLicense.html">ContentLicense</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentLicenseKey.html">ContentLicenseKey</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentMetadata.html">ContentMetadata</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentReference.html">ContentReference</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentUrl.html">ContentUrl</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CustomerPrice.html">CustomerPrice</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CustomerReview.html">CustomerReview</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GuidedReviewResponse.html">GuidedReviewResponse</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Hyperlink.html">Hyperlink</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Image.html">Image</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_LastPositionHeard.html">LastPositionHeard</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Narrator.html">Narrator</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Page.html">Page</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_PageSection.html">PageSection</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_PageSectionModel.html">PageSectionModel</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_PageSectionView.html">PageSectionView</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Price.html">Price</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Product.html">Product</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductFilterBin.html">ProductFilterBin</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductFilterField.html">ProductFilterField</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductPlan.html">ProductPlan</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductRating.html">ProductRating</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Quote.html">Quote</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_RatingDistribution.html">RatingDistribution</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ReviewContentScores.html">ReviewContentScores</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ReviewRatings.html">ReviewRatings</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc leaf"><a class="awstoc" href="Library.html">Library API</a></li>
+                  <li class="awstoc leaf"><a class="awstoc" href="Glossary.html">Glossary</a></li>
+               </ul>
+            </div>
+         </div>
+         <div id="main-column">
+            <div id="main">
+               <div id="main-content">
+                  <div id="breadcrumbs">
+                     <table summary="Breadcrumbs">
+                        <tr>
+                           <td>
+                              <div class="navheader">
+                                 <div class="breadcrumb"><a href="Welcome.html">Audible API Developer Reference</a> &raquo; <a href="API_Types.html">Data Types</a> &raquo; <span class="breadcrumb">Chapter</span></div>
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+                  <div id="main-col-body">
+                     <div class="section">
+                        <div class="titlepage">
+                           <div>
+                              <div>
+                                 <h1 class="topictitle">Chapter</h1>
+                              </div>
+                           </div>
+                        </div><a class="indexterm" name="d0e10067"></a><a class="indexterm" name="d0e10072"></a><div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="API_Chapter_Description">Description</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <p>
+                                      Describes a chapter in an audiobook.
+                                  
+                           </p>
+                        </div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="API_Chapter_Contents">Contents</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="variablelist">
+                              <dl>
+                                 <dt><a name="audible-Type-Chapter-Start_offset_sec"></a><span class="term"><span class="bold"><strong>start_offset_sec</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The location in the book (in seconds) from where this chapter starts.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: always-returned
+                                               
+                                    </p>
+                                    <p> Type: Number</p>
+                                    <p> Valid range:  Minimum value of 0. </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Chapter-Title"></a><span class="term"><span class="bold"><strong>title</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The title of this chapter.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: always-returned
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Length constraints:  Minimum length of 1.  Maximum length of 255. </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                        </div>
+                     </div>
+                  </div><img src="images/expanderarrow.png" style="display:none;height:0;width:0"><div id="main-col-footer">
+                     <div id="doc-conventions"><a target="_top" href="https://docs.aws.amazon.com/general/latest/gr/docconventions.html">Document Conventions</a></div>
+                     <div id="next"><a class="awstoc" accesskey="p" href="API_CategoryLadder.html">&laquo; Previous </a><a class="awstoc" accesskey="n" href="API_ChapterInfo.html">Next &raquo;</a></div>
+                  </div>
+               </div>
+            </div>
+            <div id="right-expanded">
+               <div id="right-content-wrapper">
+                  <div id="right-col-header"><a id="pdf_link" href="audible-api.pdf"> PDF </a></div>
+                  <div id="pagetoc">
+                     <p>On this page:</p>
+                     <ul class="pagetoc">
+                        <li class="pagetoc" name="Description"><a class="pagetoc" href="#API_Chapter_Description">Description</a></li>
+                        <li class="pagetoc" name="Contents"><a class="pagetoc" href="#API_Chapter_Contents">Contents</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="footer">
+         <div id="footer-left"><a target="_top" href="http://www.audible.com/legal-terms/privacy-policy?moduleId=201648650">Privacy Notice</a> | &copy; 2015 Audible Inc. All rights reserved.
+         </div>
+         <div id="footer-right">&nbsp;</div>
+      </div>
+      <noscript>
+         <div>
+            <div>
+               <div>
+                  <div id="error_messages">
+                     <div id="js_error_message"><strong>Javascript is disabled or is unavailable in your browser.</strong><br> To use the AWS Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions. 
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </noscript>
+   </body>
+</html>

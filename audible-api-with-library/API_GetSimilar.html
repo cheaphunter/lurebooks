@@ -1,0 +1,737 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>GET /catalog/products/{asin}/sims - Audible API</title>
+      <link rel="home" href="#top" title="Audible API">
+      <link rel="up" href="API_Operations.html" title="Actions">
+      <link rel="prev" href="API_GetReviews.html" title="GET /catalog/products/{asin}/reviews">
+      <link rel="next" href="API_GetContentLicense.html" title="POST /content/{asin}/licenserequest">
+      <meta name="keywords" content="API,GetSimilar,requests,ServiceUnavailableHttpException,errors,">
+      <meta name="deployment_region" content="EWR">
+      <meta name="product" content="Audible API">
+      <meta name="guide" content="Developer Reference">
+      <meta name="guide-locale" content="en_us">
+      <link rel="icon" type="image/ico" href="/favicon.ico">
+      <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+      <link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="css/google-font.css">
+      <link rel="stylesheet" type="text/css" href="css/highlight-default.css">
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css">
+      <link rel="stylesheet" type="text/css" href="css/awsdocs.css"><script type="text/javascript" src="js/highlight.pack.js"></script><script type="text/javascript" src="js/jquery.min.js"></script><script type="text/javascript" src="js/jquery-ui.min.js"></script><script type="text/javascript" src="js/handlebars.js"></script><script type="text/javascript" src="js/awsdocs.min.js"></script></head>
+   <body id="top">
+      <div id="aws-nav" class="aws-nav-header">
+         <div class="aws-nav-header-left">
+            <div class="aws-nav-logo"><a href="Welcome.html"><span>Amazon Web Services</span></a></div>
+         </div>
+         <div id="aws-nav-header-right" class="aws-nav-header-right">
+            <div class="aws-nav-popover-trigger" data-dropdown="aws-nav-dropdown-lang"></div>
+            <div id="aws-nav-quicklinks-separator" class="aws-nav-quicklinks-separator">
+               <div class="aws-nav-left"></div>
+               <div class="aws-nav-right"></div>
+            </div>
+         </div>
+      </div><script type="text/javascript">
+         <!--
+						var thispage = "API_GetSimilar.html";
+						var tocroot = location.protocol + '//' + location.hostname + location.pathname;
+						--></script><div id="content-container">
+         <div id="left-column" class="ui-resizable">
+            <div id="left-col-header">
+               <div id="left-col-top-content">
+                  <div id="service-name">Audible API </div>
+                  <div id="guide-info">Developer Reference (Version 1.0)
+                     <div id="content-button"><i id="toggle-contents" class="fa fa-bars"></i></div>
+                  </div>
+               </div>
+            </div>
+            <div id="toc">
+               <ul class="awstoc">
+                  <li class="awstoc leaf"><a class="awstoc" href="Welcome.html">Welcome</a></li>
+                  <li class="awstoc closed"><a class="awstoc" href="GettingStarted.html">Getting Started</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="DeveloperRegistration.html">Registration</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="AccessRequest.html">Request Access</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="Authentication.html">Authentication</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="CustomerCredentials.html">Access for a Customer</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="AnonymousCredentials.html">Access Without a Customer</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc leaf"><a class="awstoc" href="MakingRequests.html">Making Requests</a></li>
+                  <li class="awstoc leaf"><a class="awstoc" href="ResponseGroups.html">Response Groups</a></li>
+                  <li class="awstoc leaf"><a class="awstoc" href="Examples.html">Examples</a></li>
+                  <li class="awstoc opened"><a class="awstoc" href="API_Operations.html">Actions</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetLastPositionHeardAnnotations.html">GET /annotations/lastpositions</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetCategories.html">GET /catalog/categories</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetCategoryById.html">GET /catalog/categories/{id}</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetProducts.html">GET /catalog/products</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetProduct.html">GET /catalog/products/{asin}</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetReviews.html">GET /catalog/products/{asin}/reviews</a></li>
+                        <li class="awstoc leaf"><a class="awstoc selected" href="API_GetSimilar.html">GET /catalog/products/{asin}/sims</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetContentLicense.html">POST /content/{asin}/licenserequest</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetContentMetadata.html">GET /content/{asin}/metadata</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetPage.html">GET /pages/{page_id}</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetRecommendations.html">GET /recommendations</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="API_Types.html">Data Types</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="API_AsinLPH.html">AsinLPH</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Author.html">Author</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_BinRange.html">BinRange</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Category.html">Category</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CategoryImage.html">CategoryImage</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CategoryLadder.html">CategoryLadder</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Chapter.html">Chapter</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ChapterInfo.html">ChapterInfo</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Codec.html">Codec</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentLicense.html">ContentLicense</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentLicenseKey.html">ContentLicenseKey</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentMetadata.html">ContentMetadata</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentReference.html">ContentReference</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentUrl.html">ContentUrl</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CustomerPrice.html">CustomerPrice</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CustomerReview.html">CustomerReview</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GuidedReviewResponse.html">GuidedReviewResponse</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Hyperlink.html">Hyperlink</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Image.html">Image</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_LastPositionHeard.html">LastPositionHeard</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Narrator.html">Narrator</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Page.html">Page</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_PageSection.html">PageSection</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_PageSectionModel.html">PageSectionModel</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_PageSectionView.html">PageSectionView</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Price.html">Price</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Product.html">Product</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductFilterBin.html">ProductFilterBin</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductFilterField.html">ProductFilterField</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductPlan.html">ProductPlan</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductRating.html">ProductRating</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Quote.html">Quote</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_RatingDistribution.html">RatingDistribution</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ReviewContentScores.html">ReviewContentScores</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ReviewRatings.html">ReviewRatings</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc leaf"><a class="awstoc" href="Library.html">Library API</a></li>
+                  <li class="awstoc leaf"><a class="awstoc" href="Glossary.html">Glossary</a></li>
+               </ul>
+            </div>
+         </div>
+         <div id="main-column">
+            <div id="main">
+               <div id="main-content">
+                  <div id="breadcrumbs">
+                     <table summary="Breadcrumbs">
+                        <tr>
+                           <td>
+                              <div class="navheader">
+                                 <div class="breadcrumb"><a href="Welcome.html">Audible API Developer Reference</a> &raquo; <a href="API_Operations.html">Actions</a> &raquo; <span class="breadcrumb">GET /catalog/products/{asin}/sims</span></div>
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+                  <div id="main-col-body">
+                     <div class="section">
+                        <div class="titlepage">
+                           <div>
+                              <div>
+                                 <h1 class="topictitle">GET /catalog/products/{asin}/sims</h1>
+                              </div>
+                           </div>
+                        </div><a class="indexterm" name="d0e5927"></a><a class="indexterm" name="d0e5932"></a><a class="indexterm" name="d0e5937"></a><p>
+                                   Retrieves a list of similar product to the given product (specified by its ASIN).
+                               
+                        </p>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="API_GetSimilar_RequestSyntax">Request Syntax</h2>
+                                 </div>
+                              </div>
+                           </div><pre class="programlisting"><code class="nohighlight">GET /1.0/catalog/products/<em class="replaceable"><code>asin</code></em>/sims?response_groups=<em class="replaceable"><code>response_groups</code></em>&amp;associate_code=<em class="replaceable"><code>associate_code</code></em>&amp;plan=<em class="replaceable"><code>plan</code></em>&amp;in_plan_timestamp=<em class="replaceable"><code>in_plan_timestamp</code></em>&amp;not_in_plan_timestamp=<em class="replaceable"><code>not_in_plan_timestamp</code></em>&amp;reviews_num_results=<em class="replaceable"><code>reviews_num_results</code></em>&amp;reviews_sort_by=<em class="replaceable"><code>reviews_sort_by</code></em>&amp;image_sizes=<em class="replaceable"><code>image_sizes</code></em>&amp;image_dpi=<em class="replaceable"><code>image_dpi</code></em>&amp;category_image_variants=<em class="replaceable"><code>category_image_variants</code></em>&amp;similarity_type=<em class="replaceable"><code>similarity_type</code></em>&amp;num_results=<em class="replaceable"><code>num_results</code></em>&amp;language=<em class="replaceable"><code>language</code></em> HTTP/1.1</code></pre></div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="API_GetSimilar_RequestParameters">URI Request Parameters</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <p>The request accepts the following URI parameters.</p>
+                           <div class="variablelist">
+                              <dl>
+                                 <dt><a name="audible-GetSimilar-request-Asin"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">asin</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               Identifier of the product to which similar products will be retrieved.
+                                           
+                                    </p>
+                                    <p> Required: Yes </p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-request-Associate_code"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">associate_code</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The associate code for tracking user entry point and targeted pricing for a customer reaching us through an associate.
+                                               
+                                    </p>
+                                    <div class="aws-note">
+                                       <p class="aws-note">Note</p>
+                                       <p>
+                                                      
+                                                      Please contact us to get a code once your app is ready.
+                                                  
+                                       </p>
+                                    </div>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-request-Category_image_variants"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">category_image_variants</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The image variants of category images to be retrieved. Takes a comma delimited list.
+                                               
+                                    </p>
+                                    <p>
+                                                   Only valid when <code class="code">category_ladders</code> and <code class="code">category_media</code> response groups are applied.
+                                               
+                                    </p>
+                                    <p>
+                                                   Default: <span class="emphasis"><em>uses all valid values</em></span>
+                                                         
+                                    </p>
+                                    <p>
+                                                   Valid Values: Rodizio | Icon.
+                                               
+                                    </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-request-Image_dpi"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">image_dpi</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The DPI of the category images being returned.
+                                               
+                                    </p>
+                                    <p>
+                                                   Only valid when <code class="code">category_ladders</code> and <code class="code">category_media</code> response groups are applied.
+                                               
+                                    </p>
+                                    <p>
+                                                   Default: 320
+                                               
+                                    </p>
+                                    <p>Pattern: <code class="code">^\d+$</code></p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-request-Image_sizes"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">image_sizes</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               Size (in pixels) of the longest side for the product's image.
+                                               A comma delimited list would return different URLs for the image scaled to the specified sizes.
+                                               
+                                    </p>
+                                    <p>
+                                                   Only valid when <code class="code">media</code> response group is applied.
+                                               
+                                    </p>
+                                    <p>
+                                                   Default: 500
+                                               
+                                    </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-request-In_plan_timestamp"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">in_plan_timestamp</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The timestamp at which the similar products should be available in the specified product plan.
+                                               
+                                    </p>
+                                    <div class="aws-note">
+                                       <p class="aws-note">Note</p>
+                                       <p>
+                                                      Products belong to a product plan only for a certain duration.
+                                                  
+                                       </p>
+                                    </div>
+                                    <p>
+                                               Current guidance is to pass the most recent midnight UTC timestamp so that your requests don't change regularly
+                                               and can take advantage of request caching.
+                                               
+                                    </p>
+                                    <p>
+                                                   Required if <code class="code">plan</code> is specified.
+                                               
+                                    </p>
+                                    <p>
+                                                   Valid Format: DateTime in ISO 8601
+                                               
+                                    </p>
+                                    <p> Length constraints:  Minimum length of 0.  Maximum length of 30. </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-request-Language"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">language</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   The languages (in ISO 639-1 code) that product metadata should be returned in. Takes a comma delimited list.
+                                                   eg. If you want in English and Japanese use <code class="code">en,ja</code>.
+                                               
+                                    </p>
+                                    <div class="aws-note">
+                                       <p class="aws-note">Note</p>
+                                       <p>
+                                                      Each product may not have metadata published in all languages.
+                                                      If the metadata in the requested language is not published, it won't be returned.
+                                                  
+                                       </p>
+                                    </div>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-request-Not_in_plan_timestamp"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">not_in_plan_timestamp</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The timestamp at which the similar products should NOT be available in the specified product plan.
+                                               
+                                    </p>
+                                    <div class="aws-note">
+                                       <p class="aws-note">Note</p>
+                                       <p>
+                                                      Products belong to a product plan only for a certain duration.
+                                                  
+                                       </p>
+                                    </div>
+                                    <p>
+                                                   Only valid when <code class="code">plan</code> is specified.
+                                               
+                                    </p>
+                                    <p>
+                                                   Valid Format: DateTime in ISO 8601
+                                               
+                                    </p>
+                                    <p> Length constraints:  Minimum length of 0.  Maximum length of 30. </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-request-Num_results"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">num_results</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The number of results to retrieve.
+                                               
+                                    </p>
+                                    <p>
+                                                   Default: 15
+                                               
+                                    </p>
+                                    <p>
+                                                   Max Value: 50
+                                               
+                                    </p>
+                                    <p>Pattern: <code class="code">^\d+$</code></p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-request-Plan"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">plan</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The product plan that should be associated with the similar products.
+                                           
+                                    </p>
+                                    <p> Valid Values: <code class="code">Rodizio | RodizioFreeBasic | Radio | AmazonEnglish | AllYouCanEat</code></p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-request-Response_groups"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">response_groups</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Specifies which data should be returned.
+                                                   The <code class="code">always-returned</code> response group is by default applied to each request and returns basic information.
+                                                   Use a comma delimited list to get more detailed response data.
+                                               
+                                    </p>
+                                    <p>
+                                                   Valid Values: <code class="code">always-returned | sku | contributors | product_desc | product_attrs | product_extended_attrs |
+                                                      product_plans | media | sample | price | rating | reviews | review_attrs | ws4v | member_giving_invites |
+                                                      ae_details | category_ladders | category_metadata | category_media</code>
+                                                         
+                                    </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-request-Reviews_num_results"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">reviews_num_results</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The number of reviews per product to be retrieved.
+                                               
+                                    </p>
+                                    <p>
+                                                   Only valid when <code class="code">reviews</code> response group is applied.
+                                               
+                                    </p>
+                                    <p>
+                                                   Default: 3
+                                               
+                                    </p>
+                                    <p>
+                                                   Max Value: 10
+                                               
+                                    </p>
+                                    <p>Pattern: <code class="code">^\d+$</code></p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-request-Reviews_sort_by"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">reviews_sort_by</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The criterion for sorting the reviews.
+                                               
+                                    </p>
+                                    <p>
+                                                   Only valid when <code class="code">reviews</code> response group is applied.
+                                               
+                                    </p>
+                                    <p>
+                                                   Default: <code class="code">MostHelpful</code>
+                                                         
+                                    </p>
+                                    <p> Valid Values: <code class="code">MostHelpful | MostRecent</code></p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-request-Similarity_type"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_RequestSyntax" title="Request Syntax">similarity_type</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The criterion for determining similarity.
+                                               
+                                    </p>
+                                    <p>
+                                                   Default: <code class="code">RawSimilarities</code>
+                                                         
+                                    </p>
+                                    <p> Valid Values: <code class="code">RawSimilarities | ByTheSameAuthor | ByTheSameNarrator | InTheSameSeries | NextInSameSeries</code></p>
+                                    <p> Required: No </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                        </div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="API_GetSimilar_RequestBody">Request Body</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <p>The request does not have a request body.</p>
+                        </div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="API_GetSimilar_ResponseSyntax">Response Syntax</h2>
+                                 </div>
+                              </div>
+                           </div><pre class="programlisting"><code class="nohighlight">HTTP/1.1 200 
+Cache-Control: <em class="replaceable"><code>CacheControl</code></em>
+Content-type: application/json
+
+{
+    "<a class="link" href="API_GetSimilar.html#audible-GetSimilar-response-Response_groups">response_groups</a>": [
+        "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+    ],
+    "<a class="link" href="API_GetSimilar.html#audible-GetSimilar-response-Similar_products">similar_products</a>": [
+        {
+            "asin": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "audible_editors_summary": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "authors": [
+                {
+                    "name": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                }
+            ],
+            "available_codecs": [
+                {
+                    "enhanced_codec": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "format": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "is_kindle_enhanced": <span class="emphasis"><em><span class="bold"><strong>boolean</strong></span></em></span>,
+                    "name": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                }
+            ],
+            "category_ladders": [
+                {
+                    "date_product_available_in_category": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "ladder": [
+                        {
+                            "children": [
+                                <span class="emphasis"><em><span class="bold"><strong>Category</strong></span></em></span>
+                            ],
+                            "default_offline_storage_days_count": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                            "default_offline_storage_item_count": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                            "description": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                            "header": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                            "id": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                            "images": [
+                                {
+                                    "aspect_height": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                                    "aspect_width": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                                    "dpi": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                                    "image_url": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                                    "variant": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                                }
+                            ],
+                            "initial_download_days_count": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                            "initial_download_item_count": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                            "is_new": <span class="emphasis"><em><span class="bold"><strong>boolean</strong></span></em></span>,
+                            "localized_name": 
+                                {
+                                    "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>" :
+                                        "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                                },
+                            "name": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                            "products": [
+                                <span class="emphasis"><em><span class="bold"><strong>Product</strong></span></em></span>
+                            ],
+                            "suppress_release_date": <span class="emphasis"><em><span class="bold"><strong>boolean</strong></span></em></span>
+                        }
+                    ],
+                    "root": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                }
+            ],
+            "content_delivery_type": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "content_level": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "content_type": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "copyright": 
+                {
+                    "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>" :
+                        "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                },
+            "customer_reviews": [
+                {
+                    "author_name": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "body": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "format": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "guided_responses": [
+                        {
+                            "answer": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                            "id": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                            "question": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                            "question_type": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                        }
+                    ],
+                    "id": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "location": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "ratings": {
+                        "overall_rating": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                        "performance_rating": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                        "story_rating": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>
+                    },
+                    "review_content_scores": {
+                        "content_quality": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                        "num_helpful_votes": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                        "num_unhelpful_votes": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>
+                    },
+                    "submission_date": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "title": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                }
+            ],
+            "editorial_reviews": [
+                "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+            ],
+            "format_type": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "invites_remaining": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+            "is_adult_product": <span class="emphasis"><em><span class="bold"><strong>boolean</strong></span></em></span>,
+            "is_in_wishlist": <span class="emphasis"><em><span class="bold"><strong>boolean</strong></span></em></span>,
+            "is_ws4v_companion_asin_owned": <span class="emphasis"><em><span class="bold"><strong>boolean</strong></span></em></span>,
+            "is_ws4v_enabled": <span class="emphasis"><em><span class="bold"><strong>boolean</strong></span></em></span>,
+            "issue_date": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "language": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "member_giving_status": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "merchandising_summary": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "narration_accent": 
+                {
+                    "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>" :
+                        "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                },
+            "narrators": [
+                {
+                    "name": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                }
+            ],
+            "plans": [
+                {
+                    "end_date": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "plan_name": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "start_date": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                }
+            ],
+            "price": {
+                "credit_price": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                "is_buy_for_free_eligible": <span class="emphasis"><em><span class="bold"><strong>boolean</strong></span></em></span>,
+                "is_credit_price_eligible": <span class="emphasis"><em><span class="bold"><strong>boolean</strong></span></em></span>,
+                "is_free_eligible": <span class="emphasis"><em><span class="bold"><strong>boolean</strong></span></em></span>,
+                "is_ws4v_upsell_eligible": <span class="emphasis"><em><span class="bold"><strong>boolean</strong></span></em></span>,
+                "list_price": {
+                    "base": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "currency_code": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "merchant_id": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "type": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                },
+                "lowest_price": {
+                    "base": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "currency_code": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "merchant_id": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "type": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                },
+                "ws4v_upsell_price": {
+                    "base": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "currency_code": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "merchant_id": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+                    "type": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                }
+            },
+            "product_images": 
+                {
+                    "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>" :
+                        "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+                },
+            "publication_name": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "publisher_name": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "publisher_summary": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "rating": {
+                "num_reviews": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                "overall_distribution": {
+                    "average_rating": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_five_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_four_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_one_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_three_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_two_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>
+                },
+                "performance_distribution": {
+                    "average_rating": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_five_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_four_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_one_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_three_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_two_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>
+                },
+                "story_distribution": {
+                    "average_rating": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_five_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_four_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_one_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_three_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+                    "num_two_star_ratings": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>
+                }
+            },
+            "release_date": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "runtime_length_min": <span class="emphasis"><em><span class="bold"><strong>number</strong></span></em></span>,
+            "sample_url": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "sku": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "subtitle": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "title": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>",
+            "ws4v_companion_asin": "<span class="emphasis"><em><span class="bold"><strong>string</strong></span></em></span>"
+        }
+    ]
+}
+</code></pre></div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="API_GetSimilar_ResponseElements">Response Elements</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <p>If the action is successful, the service sends back an HTTP 200 response.</p>
+                           <p>The response returns the following HTTP headers.</p>
+                           <div class="variablelist">
+                              <dl>
+                                 <dt><a name="audible-GetSimilar-response-CacheControl"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_ResponseSyntax" title="Response Syntax">CacheControl</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>Standard HTTP/1.1 <a class="ulink" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9" target="_blank">Cache-Control</a> header.
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                           <p> The following data is returned in JSON format by the service. </p>
+                           <div class="variablelist">
+                              <dl>
+                                 <dt><a name="audible-GetSimilar-response-Response_groups"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_ResponseSyntax" title="Response Syntax">response_groups</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               Successful response groups. Data associated with these response groups was successfully retrieved.
+                                           
+                                    </p>
+                                    <p> Type:  array of Strings</p>
+                                 </dd>
+                                 <dt><a name="audible-GetSimilar-response-Similar_products"></a><span class="term"><span class="bold"><strong><a class="link" href="API_GetSimilar.html#API_GetSimilar_ResponseSyntax" title="Response Syntax">similar_products</a></strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               Collection of resultant products for this page.
+                                           
+                                    </p>
+                                    <p> Type:  array of <a class="xref" href="API_Product.html" title="Product">Product</a> objects 
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                        </div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="API_GetSimilar_Errors">Errors</h2>
+                                 </div>
+                              </div>
+                           </div><a class="indexterm" name="d0e6805"></a><a class="indexterm" name="d0e6808"></a><div class="variablelist">
+                              <dl>
+                                 <dt><span class="term"><span class="bold"><strong>ServiceUnavailableHttpException</strong></span></span></dt>
+                                 <dd>
+                                    <p> HTTP Status Code: 500</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                        </div>
+                     </div>
+                  </div><img src="images/expanderarrow.png" style="display:none;height:0;width:0"><div id="main-col-footer">
+                     <div id="doc-conventions"><a target="_top" href="https://docs.aws.amazon.com/general/latest/gr/docconventions.html">Document Conventions</a></div>
+                     <div id="next"><a class="awstoc" accesskey="p" href="API_GetReviews.html">&laquo; Previous </a><a class="awstoc" accesskey="n" href="API_GetContentLicense.html">Next &raquo;</a></div>
+                  </div>
+               </div>
+            </div>
+            <div id="right-expanded">
+               <div id="right-content-wrapper">
+                  <div id="right-col-header"><a id="pdf_link" href="audible-api.pdf"> PDF </a></div>
+                  <div id="pagetoc">
+                     <p>On this page:</p>
+                     <ul class="pagetoc">
+                        <li class="pagetoc" name="Request Syntax"><a class="pagetoc" href="#API_GetSimilar_RequestSyntax">Request Syntax</a></li>
+                        <li class="pagetoc" name="URI Request Parameters"><a class="pagetoc" href="#API_GetSimilar_RequestParameters">URI Request Parameters</a></li>
+                        <li class="pagetoc" name="Request Body"><a class="pagetoc" href="#API_GetSimilar_RequestBody">Request Body</a></li>
+                        <li class="pagetoc" name="Response Syntax"><a class="pagetoc" href="#API_GetSimilar_ResponseSyntax">Response Syntax</a></li>
+                        <li class="pagetoc" name="Response Elements"><a class="pagetoc" href="#API_GetSimilar_ResponseElements">Response Elements</a></li>
+                        <li class="pagetoc" name="Errors"><a class="pagetoc" href="#API_GetSimilar_Errors">Errors</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="footer">
+         <div id="footer-left"><a target="_top" href="http://www.audible.com/legal-terms/privacy-policy?moduleId=201648650">Privacy Notice</a> | &copy; 2015 Audible Inc. All rights reserved.
+         </div>
+         <div id="footer-right">&nbsp;</div>
+      </div>
+      <noscript>
+         <div>
+            <div>
+               <div>
+                  <div id="error_messages">
+                     <div id="js_error_message"><strong>Javascript is disabled or is unavailable in your browser.</strong><br> To use the AWS Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions. 
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </noscript>
+   </body>
+</html>

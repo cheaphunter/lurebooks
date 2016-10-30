@@ -1,0 +1,664 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Product - Audible API</title>
+      <link rel="home" href="#top" title="Audible API">
+      <link rel="up" href="API_Types.html" title="Data Types">
+      <link rel="prev" href="API_Price.html" title="Price">
+      <link rel="next" href="API_ProductFilterBin.html" title="ProductFilterBin">
+      <meta name="keywords" content="Types,Product,">
+      <meta name="deployment_region" content="EWR">
+      <meta name="product" content="Audible API">
+      <meta name="guide" content="Developer Reference">
+      <meta name="guide-locale" content="en_us">
+      <link rel="icon" type="image/ico" href="/favicon.ico">
+      <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+      <link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="css/google-font.css">
+      <link rel="stylesheet" type="text/css" href="css/highlight-default.css">
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css">
+      <link rel="stylesheet" type="text/css" href="css/awsdocs.css"><script type="text/javascript" src="js/highlight.pack.js"></script><script type="text/javascript" src="js/jquery.min.js"></script><script type="text/javascript" src="js/jquery-ui.min.js"></script><script type="text/javascript" src="js/handlebars.js"></script><script type="text/javascript" src="js/awsdocs.min.js"></script></head>
+   <body id="top">
+      <div id="aws-nav" class="aws-nav-header">
+         <div class="aws-nav-header-left">
+            <div class="aws-nav-logo"><a href="Welcome.html"><span>Amazon Web Services</span></a></div>
+         </div>
+         <div id="aws-nav-header-right" class="aws-nav-header-right">
+            <div class="aws-nav-popover-trigger" data-dropdown="aws-nav-dropdown-lang"></div>
+            <div id="aws-nav-quicklinks-separator" class="aws-nav-quicklinks-separator">
+               <div class="aws-nav-left"></div>
+               <div class="aws-nav-right"></div>
+            </div>
+         </div>
+      </div><script type="text/javascript">
+         <!--
+						var thispage = "API_Product.html";
+						var tocroot = location.protocol + '//' + location.hostname + location.pathname;
+						--></script><div id="content-container">
+         <div id="left-column" class="ui-resizable">
+            <div id="left-col-header">
+               <div id="left-col-top-content">
+                  <div id="service-name">Audible API </div>
+                  <div id="guide-info">Developer Reference (Version 1.0)
+                     <div id="content-button"><i id="toggle-contents" class="fa fa-bars"></i></div>
+                  </div>
+               </div>
+            </div>
+            <div id="toc">
+               <ul class="awstoc">
+                  <li class="awstoc leaf"><a class="awstoc" href="Welcome.html">Welcome</a></li>
+                  <li class="awstoc closed"><a class="awstoc" href="GettingStarted.html">Getting Started</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="DeveloperRegistration.html">Registration</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="AccessRequest.html">Request Access</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="Authentication.html">Authentication</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="CustomerCredentials.html">Access for a Customer</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="AnonymousCredentials.html">Access Without a Customer</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc leaf"><a class="awstoc" href="MakingRequests.html">Making Requests</a></li>
+                  <li class="awstoc leaf"><a class="awstoc" href="ResponseGroups.html">Response Groups</a></li>
+                  <li class="awstoc leaf"><a class="awstoc" href="Examples.html">Examples</a></li>
+                  <li class="awstoc closed"><a class="awstoc" href="API_Operations.html">Actions</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetLastPositionHeardAnnotations.html">GET /annotations/lastpositions</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetCategories.html">GET /catalog/categories</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetCategoryById.html">GET /catalog/categories/{id}</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetProducts.html">GET /catalog/products</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetProduct.html">GET /catalog/products/{asin}</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetReviews.html">GET /catalog/products/{asin}/reviews</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetSimilar.html">GET /catalog/products/{asin}/sims</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetContentLicense.html">POST /content/{asin}/licenserequest</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetContentMetadata.html">GET /content/{asin}/metadata</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetPage.html">GET /pages/{page_id}</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GetRecommendations.html">GET /recommendations</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc opened"><a class="awstoc" href="API_Types.html">Data Types</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="API_AsinLPH.html">AsinLPH</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Author.html">Author</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_BinRange.html">BinRange</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Category.html">Category</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CategoryImage.html">CategoryImage</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CategoryLadder.html">CategoryLadder</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Chapter.html">Chapter</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ChapterInfo.html">ChapterInfo</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Codec.html">Codec</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentLicense.html">ContentLicense</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentLicenseKey.html">ContentLicenseKey</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentMetadata.html">ContentMetadata</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentReference.html">ContentReference</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ContentUrl.html">ContentUrl</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CustomerPrice.html">CustomerPrice</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_CustomerReview.html">CustomerReview</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_GuidedReviewResponse.html">GuidedReviewResponse</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Hyperlink.html">Hyperlink</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Image.html">Image</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_LastPositionHeard.html">LastPositionHeard</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Narrator.html">Narrator</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Page.html">Page</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_PageSection.html">PageSection</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_PageSectionModel.html">PageSectionModel</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_PageSectionView.html">PageSectionView</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Price.html">Price</a></li>
+                        <li class="awstoc leaf"><a class="awstoc selected" href="API_Product.html">Product</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductFilterBin.html">ProductFilterBin</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductFilterField.html">ProductFilterField</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductPlan.html">ProductPlan</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ProductRating.html">ProductRating</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_Quote.html">Quote</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_RatingDistribution.html">RatingDistribution</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ReviewContentScores.html">ReviewContentScores</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="API_ReviewRatings.html">ReviewRatings</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc leaf"><a class="awstoc" href="Library.html">Library API</a></li>
+                  <li class="awstoc leaf"><a class="awstoc" href="Glossary.html">Glossary</a></li>
+               </ul>
+            </div>
+         </div>
+         <div id="main-column">
+            <div id="main">
+               <div id="main-content">
+                  <div id="breadcrumbs">
+                     <table summary="Breadcrumbs">
+                        <tr>
+                           <td>
+                              <div class="navheader">
+                                 <div class="breadcrumb"><a href="Welcome.html">Audible API Developer Reference</a> &raquo; <a href="API_Types.html">Data Types</a> &raquo; <span class="breadcrumb">Product</span></div>
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+                  <div id="main-col-body">
+                     <div class="section">
+                        <div class="titlepage">
+                           <div>
+                              <div>
+                                 <h1 class="topictitle">Product</h1>
+                              </div>
+                           </div>
+                        </div><a class="indexterm" name="d0e11559"></a><a class="indexterm" name="d0e11564"></a><div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="API_Product_Description">Description</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <p>
+                                      Describes a product.
+                                  
+                           </p>
+                        </div>
+                        <div class="section">
+                           <div class="titlepage">
+                              <div>
+                                 <div>
+                                    <h2 class="title" style="clear: both" id="API_Product_Contents">Contents</h2>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="variablelist">
+                              <dl>
+                                 <dt><a name="audible-Type-Product-Asin"></a><span class="term"><span class="bold"><strong>asin</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               ASIN identifier of the product.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: always-returned
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Audible_editors_summary"></a><span class="term"><span class="bold"><strong>audible_editors_summary</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The Audible Editors' Summary (AES) is an official, copy-edited description of this product.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: product_extended_attrs
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Authors"></a><span class="term"><span class="bold"><strong>authors</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               A collection of authors of this product.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: contributors
+                                               
+                                    </p>
+                                    <p> Type:  array of <a class="xref" href="API_Author.html" title="Author">Author</a> objects 
+                                    </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Available_codecs"></a><span class="term"><span class="bold"><strong>available_codecs</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Response Group: product_attrs
+                                               
+                                    </p>
+                                    <p> Type:  array of <a class="xref" href="API_Codec.html" title="Codec">Codec</a> objects 
+                                    </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Category_ladders"></a><span class="term"><span class="bold"><strong>category_ladders</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               A collection of category ladder of all the categories this product falls under.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: category_ladders
+                                               
+                                    </p>
+                                    <p> Type:  array of <a class="xref" href="API_CategoryLadder.html" title="CategoryLadder">CategoryLadder</a> objects 
+                                    </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Content_delivery_type"></a><span class="term"><span class="bold"><strong>content_delivery_type</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               Indicates what type of the product would be delivered to the customer.
+                                               E.g. MultiPartBook means content of this audiobook is a subset of a big book.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: product_attrs
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Valid Values: <code class="code">SinglePartBook | MultiPartBook | Subscription | AudioPart | SinglePartIssue | MultiPartIssue | Periodical | Bundle | Hardgood
+                                          | GiftMembership | Hardware | Credits | LanguageLearning | AmazonEnglishParent | Unknown</code></p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Content_level"></a><span class="term"><span class="bold"><strong>content_level</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The content level associated with this product.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: ae_details
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Content_type"></a><span class="term"><span class="bold"><strong>content_type</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Indicates the origin type of the content in this product.
+                                                   E.g. <code class="code">Performance</code> means this product is a recording of a live performance.
+                                                   <code class="code">Product</code> means this product is a audio-recording of a book.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: product_attrs
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Valid Values: <code class="code">Product | Performance | Speech | Lecture | WalkingTour | RadioTvProgram | NewspaperMagazine | Periodical | Wordcast | Excerpt
+                                          | Other | Article | Album | Episode | Hypnosis | Meditation | Misc</code></p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Copyright"></a><span class="term"><span class="bold"><strong>copyright</strong></span></span></dt>
+                                 <dd>
+                                    <p>Copyright blurb in the language specified in the <code class="code">language</code> field of the request.
+                                    </p>
+                                    <p>
+                                                   Response Group: product_extended_attrs
+                                               
+                                    </p>
+                                    <p> Type: String to String map </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Customer_reviews"></a><span class="term"><span class="bold"><strong>customer_reviews</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Response Group: reviews
+                                               
+                                    </p>
+                                    <p> Type:  array of <a class="xref" href="API_CustomerReview.html" title="CustomerReview">CustomerReview</a> objects 
+                                    </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Editorial_reviews"></a><span class="term"><span class="bold"><strong>editorial_reviews</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Response Group: product_extended_attrs
+                                               
+                                    </p>
+                                    <p> Type:  array of Strings</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Format_type"></a><span class="term"><span class="bold"><strong>format_type</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Indicates how the product has been edited.
+                                                   E.g. <code class="code">abridged</code> indicates that the product is a shorter version of the original book.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: product_attrs
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Valid Values: <code class="code">abridged | unabridged | highlights | original_recording | none</code></p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Invites_remaining"></a><span class="term"><span class="bold"><strong>invites_remaining</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               Number of Member Giving Program invites customer can use for this product.
+                                               The Member Giving Program is currently available only in the US region.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: member_giving_invites
+                                               
+                                    </p>
+                                    <p> Type: Long</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Is_adult_product"></a><span class="term"><span class="bold"><strong>is_adult_product</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               If true, the content of the product is inappropriate for children.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: product_attrs
+                                               
+                                    </p>
+                                    <p> Type: Boolean</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Is_in_wishlist"></a><span class="term"><span class="bold"><strong>is_in_wishlist</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               Reserved for future enhancement.
+                                               
+                                           
+                                    </p>
+                                    <p> Type: Boolean</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Is_ws4v_companion_asin_owned"></a><span class="term"><span class="bold"><strong>is_ws4v_companion_asin_owned</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               True if this customer owns corresponding kindle e-book.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: ws4v
+                                               
+                                    </p>
+                                    <p> Type: Boolean</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Is_ws4v_enabled"></a><span class="term"><span class="bold"><strong>is_ws4v_enabled</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               True if this product is whispersync-for-voice ready.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: ws4v
+                                               
+                                    </p>
+                                    <p> Type: Boolean</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Issue_date"></a><span class="term"><span class="bold"><strong>issue_date</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The publication date of this product in in ISO 8601 format.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: product_attrs
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Language"></a><span class="term"><span class="bold"><strong>language</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The language of the product's content. E.g. english, spanish, russian, etc.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: product_attrs
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Member_giving_status"></a><span class="term"><span class="bold"><strong>member_giving_status</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               Describes customer's and product's eligibility for the Member Giving Program.
+                                               Currently, the Member Giving Program is available only in the US marketplace.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: member_giving_invites
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Valid Values: <code class="code">CustomerNotEligible | AsinNotGivable | MaxCountReached | Eligible</code></p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Merchandising_summary"></a><span class="term"><span class="bold"><strong>merchandising_summary</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The merchandising summary of the product.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: product_attrs
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Narration_accent"></a><span class="term"><span class="bold"><strong>narration_accent</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               A map of language to narration accent for the product in that language.
+                                               The languages are the ones specified in the language parameter.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: ae_details
+                                               
+                                    </p>
+                                    <p> Type: String to String map </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Narrators"></a><span class="term"><span class="bold"><strong>narrators</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Response Group: contributors
+                                               
+                                    </p>
+                                    <p> Type:  array of <a class="xref" href="API_Narrator.html" title="Narrator">Narrator</a> objects 
+                                    </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Plans"></a><span class="term"><span class="bold"><strong>plans</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The product plans that are associated with this product.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: product_plans
+                                               
+                                    </p>
+                                    <p> Type:  array of <a class="xref" href="API_ProductPlan.html" title="ProductPlan">ProductPlan</a> objects 
+                                    </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Price"></a><span class="term"><span class="bold"><strong>price</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Response Group: price
+                                               
+                                    </p>
+                                    <p> Type: <a class="xref" href="API_CustomerPrice.html" title="CustomerPrice">CustomerPrice</a> object 
+                                    </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Product_images"></a><span class="term"><span class="bold"><strong>product_images</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               Map of requested image sizes to url of this product's image scaled to that size.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: media
+                                               
+                                    </p>
+                                    <p> Type: String to String map </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Publication_name"></a><span class="term"><span class="bold"><strong>publication_name</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Response Group: product_attrs
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Publisher_name"></a><span class="term"><span class="bold"><strong>publisher_name</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Response Group: contributors
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Publisher_summary"></a><span class="term"><span class="bold"><strong>publisher_summary</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               Summary of the product from its publisher.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: product_extended_attrs
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Rating"></a><span class="term"><span class="bold"><strong>rating</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Response Group: rating
+                                               
+                                    </p>
+                                    <p> Type: <a class="xref" href="API_ProductRating.html" title="ProductRating">ProductRating</a> object 
+                                    </p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Release_date"></a><span class="term"><span class="bold"><strong>release_date</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Response Group: product_attrs
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Runtime_length_min"></a><span class="term"><span class="bold"><strong>runtime_length_min</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The total running time duration in minutes.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: product_attrs
+                                               
+                                    </p>
+                                    <p> Type: Number</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Sample_url"></a><span class="term"><span class="bold"><strong>sample_url</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The absolute-path URL for an MP3 sample of this product (null if not available).
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: sample
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Sku"></a><span class="term"><span class="bold"><strong>sku</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The SKU identifier of this product.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: sku
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Subtitle"></a><span class="term"><span class="bold"><strong>subtitle</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Response Group: product_desc
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Title"></a><span class="term"><span class="bold"><strong>title</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                                   Response Group: product_desc
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                                 <dt><a name="audible-Type-Product-Ws4v_companion_asin"></a><span class="term"><span class="bold"><strong>ws4v_companion_asin</strong></span></span></dt>
+                                 <dd>
+                                    <p>
+                                               The ASIN identifier of the corresponding kindle e-book.
+                                               
+                                    </p>
+                                    <p>
+                                                   Response Group: ws4v
+                                               
+                                    </p>
+                                    <p> Type: String</p>
+                                    <p> Required: No </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                        </div>
+                     </div>
+                  </div><img src="images/expanderarrow.png" style="display:none;height:0;width:0"><div id="main-col-footer">
+                     <div id="doc-conventions"><a target="_top" href="https://docs.aws.amazon.com/general/latest/gr/docconventions.html">Document Conventions</a></div>
+                     <div id="next"><a class="awstoc" accesskey="p" href="API_Price.html">&laquo; Previous </a><a class="awstoc" accesskey="n" href="API_ProductFilterBin.html">Next &raquo;</a></div>
+                  </div>
+               </div>
+            </div>
+            <div id="right-expanded">
+               <div id="right-content-wrapper">
+                  <div id="right-col-header"><a id="pdf_link" href="audible-api.pdf"> PDF </a></div>
+                  <div id="pagetoc">
+                     <p>On this page:</p>
+                     <ul class="pagetoc">
+                        <li class="pagetoc" name="Description"><a class="pagetoc" href="#API_Product_Description">Description</a></li>
+                        <li class="pagetoc" name="Contents"><a class="pagetoc" href="#API_Product_Contents">Contents</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="footer">
+         <div id="footer-left"><a target="_top" href="http://www.audible.com/legal-terms/privacy-policy?moduleId=201648650">Privacy Notice</a> | &copy; 2015 Audible Inc. All rights reserved.
+         </div>
+         <div id="footer-right">&nbsp;</div>
+      </div>
+      <noscript>
+         <div>
+            <div>
+               <div>
+                  <div id="error_messages">
+                     <div id="js_error_message"><strong>Javascript is disabled or is unavailable in your browser.</strong><br> To use the AWS Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions. 
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </noscript>
+   </body>
+</html>
